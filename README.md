@@ -1,19 +1,17 @@
 # user
 
-# login, register, logout
+### login, register, logout
 
-# update profile, update password
+### update profile, update password
 
 # product
 
-# get list product
+### get list product
 
-# search product
+### search product
 
-### cart
+# cart
 
-# add product to cart
+### add product to cart
 
-# remove product to cart
-
-#
+### remove product to cart
