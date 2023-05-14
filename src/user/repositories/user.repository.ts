@@ -5,9 +5,9 @@ import { BaseRepository } from '../../base.repository';
 import { User } from '../model/user.model';
 
 @Injectable()
-export class PostRepository extends BaseRepository<User> {
+export class UserRepository extends BaseRepository<User> {
   constructor(
-    @InjectModel('Post')
+    @InjectModel('User')
     private readonly userModel: Model<User>,
   ) {
     super(userModel);

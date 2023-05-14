@@ -13,7 +13,7 @@ export class BaseRepository<T extends Document> {
   }
 
   async findByCondition(
-    filter,
+    filter?: any | null,
     field?: any | null,
     option?: any | null,
     populate?: any | null,

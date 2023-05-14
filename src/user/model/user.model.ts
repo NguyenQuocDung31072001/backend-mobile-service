@@ -18,7 +18,9 @@ const UserSchema = new Schema(
 export { UserSchema };
 
 export interface User extends Document {
-  title: string;
-  description: string;
-  content: string;
+  username: string;
+  email: string;
+  fullname: string;
+  password: string;
+  phone_number: string;
 }
