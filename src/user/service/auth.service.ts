@@ -1,7 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { LoginDto, RegisterDto } from '../dto/auth.dto';
 import { UserRepository } from '../repositories/user.repository';
-import { User } from '../model/user.model';
 
 @Injectable()
 export class AuthService {

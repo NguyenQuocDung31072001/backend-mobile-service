@@ -7,13 +7,14 @@ const ProductSchema = new Schema(
     price: Number,
     description: String,
     image_url: String,
+    public_id: String,
     date: String,
     quantity: Number,
     rating: [{ type: Schema.Types.ObjectId, ref: 'Rating' }],
   },
   {
     timestamps: true,
-    collection: 'user',
+    collection: 'product',
   },
 );
 
@@ -24,6 +25,7 @@ export interface Product extends Document {
   price: number;
   description: string;
   image_url: string;
+  public_id: string;
   date: string;
   quantity: number;
   rating: [Rating];

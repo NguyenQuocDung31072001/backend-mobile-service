@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './user/user.module';
 import { ProductModule } from './product/product.module';
 import { RatingModule } from './rating/rating.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 
 @Module({
   imports: [
@@ -14,10 +15,12 @@ import { RatingModule } from './rating/rating.module';
     RatingModule,
     ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MONGODB_URL, {
+      dbName: 'mobile-service',
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true,
     }),
+    CloudinaryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
