@@ -13,11 +13,10 @@ export class AuthService {
     if (!exitUser) {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
-    return {
-      email: exitUser.email,
-      username: exitUser.username,
-      fullname: exitUser.fullname,
-    };
+    if (exitUser.password !== user.password) {
+      throw new HttpException('Wrong password', HttpStatus.NOT_FOUND);
+    }
+    return exitUser;
   }
   async register(user: RegisterDto): Promise<string> {
     const exitUser = await this.userRepository.findByCondition({

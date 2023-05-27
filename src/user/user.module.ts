@@ -6,9 +6,11 @@ import { UserSchema } from './model/user.model';
 import { AuthController } from './controller/auth.controller';
 import { AuthService } from './service/auth.service';
 import { UserRepository } from './repositories/user.repository';
+import { CloudinaryModule } from 'src/cloudinary/cloudinary.module';
 
 @Module({
   imports: [
+    CloudinaryModule,
     MongooseModule.forFeature([
       {
         name: 'User',

@@ -1,16 +1,15 @@
 import { IsNotEmpty } from 'class-validator';
 
-export class CreatePostDto {
-  content: string;
-  @IsNotEmpty()
-  title: string;
-  description: string;
+export class UpdateInfoUser {
+  username?: string;
+  email?: string;
+  fullname?: string;
+  phone_number?: string;
 }
 
-export class UpdatePostDto {
+export class ChangePassword {
   @IsNotEmpty()
-  id: number;
-  content: string;
+  oldPassword: string;
   @IsNotEmpty()
-  title: string;
+  newPassword: string;
 }

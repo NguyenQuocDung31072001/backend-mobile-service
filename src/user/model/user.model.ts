@@ -7,6 +7,8 @@ const UserSchema = new Schema(
     fullname: String,
     password: String,
     phone_number: String,
+    avatar_url: String,
+    public_id: String,
     // created_at: { type: Date, required: true, default: Date.now },
   },
   {
@@ -23,4 +25,6 @@ export interface User extends Document {
   fullname: string;
   password: string;
   phone_number: string;
+  avatar_url: string;
+  public_id: string;
 }
