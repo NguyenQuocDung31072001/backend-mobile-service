@@ -5,6 +5,7 @@ export class UpdateInfoUser {
   email?: string;
   fullname?: string;
   phone_number?: string;
+  address?: string;
 }
 
 export class ChangePassword {

@@ -37,6 +37,7 @@ export class UserService {
       ? user.phone_number
       : userModel.phone_number;
     userModel.fullname = user.fullname ? user.fullname : userModel.fullname;
+    userModel.address = user.address ? user.address : userModel.address;
     const result = await userModel.save();
     return result;
   }
