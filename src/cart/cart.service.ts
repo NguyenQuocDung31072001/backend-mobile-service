@@ -1,5 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CartRepository } from './cart.repository';
+import { Cart } from './cart.model';
 
 @Injectable()
 export class CartService {
@@ -11,12 +12,18 @@ export class CartService {
         user: id_user,
       },
     );
-    console.log({ listCartByUser });
+    return listCartByUser;
+  }
+  async getCartByUserDontPopulate(id_user) {
+    const listCartByUser =
+      await this.cartRepository.findByConditionAndDontPopulate({
+        user: id_user,
+      });
     return listCartByUser;
   }
 
   async createCart(id_user: string, id_product: string) {
-    const cart = await this.cartRepository.findByCondition({
+    const cart: Cart = await this.cartRepository.findByCondition({
       user: id_user,
       product: id_product,
     });
@@ -55,5 +62,9 @@ export class CartService {
       throw new HttpException('Cart not found', HttpStatus.NOT_FOUND);
     }
     return cart.remove();
+  }
+
+  async deleteCartByUser(id_user: string) {
+    return await this.cartRepository.deleteMany({ user: id_user });
   }
 }

@@ -9,6 +9,7 @@ import { RatingModule } from './rating/rating.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { CategoryModule } from './category/category.module';
 import { CartModule } from './cart/cart.module';
+import { PurchaseModule } from './purchase/purchase.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { CartModule } from './cart/cart.module';
     CloudinaryModule,
     CategoryModule,
     CartModule,
+    PurchaseModule,
   ],
   controllers: [AppController],
   providers: [AppService],

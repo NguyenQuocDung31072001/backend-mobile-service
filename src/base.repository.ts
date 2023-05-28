@@ -21,12 +21,17 @@ export class BaseRepository<T extends Document> {
     return this.model.findOne(filter, field, option).populate(populate);
   }
 
-  async getByCondition(
+  async getByCondition({
     filter,
-    field?: any | null,
-    option?: any | null,
-    populate?: any | null,
-  ): Promise<T[]> {
+    field,
+    option,
+    populate,
+  }: {
+    filter;
+    field?: any | null;
+    option?: any | null;
+    populate?: any | null;
+  }): Promise<T[]> {
     return this.model.find(filter, field, option).populate(populate);
   }
 
@@ -46,8 +51,8 @@ export class BaseRepository<T extends Document> {
     return this.model.deleteOne({ _id: id } as FilterQuery<T>);
   }
 
-  async deleteMany(id: string[]) {
-    return this.model.deleteMany({ _id: { $in: id } } as FilterQuery<T>);
+  async deleteMany(filed: any) {
+    return this.model.deleteMany(filed);
   }
 
   async deleteByCondition(filter) {
