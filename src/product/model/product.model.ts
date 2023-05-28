@@ -11,6 +11,7 @@ const ProductSchema = new Schema(
     date: String,
     quantity: Number,
     rating: [{ type: Schema.Types.ObjectId, ref: 'Rating' }],
+    category: { type: Schema.Types.ObjectId, ref: 'Category' },
   },
   {
     timestamps: true,

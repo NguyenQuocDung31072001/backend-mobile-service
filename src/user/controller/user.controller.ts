@@ -1,10 +1,8 @@
 import {
   Body,
   Controller,
-  Get,
   Param,
   Patch,
-  Post,
   Put,
   UploadedFile,
   UseInterceptors,

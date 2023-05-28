@@ -10,9 +10,9 @@ export class CreateProductDto {
   @IsNotEmpty()
   description: string;
 
-  @IsNotEmpty()
-  quantity: number;
+  //   @IsNotEmpty()
+  //   date: Date;
 
   @IsNotEmpty()
-  category: string;
+  quantity: number;
 }

@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { ProductModule } from './product/product.module';
 import { RatingModule } from './rating/rating.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { CloudinaryModule } from './cloudinary/cloudinary.module';
       useCreateIndex: true,
     }),
     CloudinaryModule,
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

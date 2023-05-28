@@ -20,6 +20,10 @@ export class ProductController {
     private readonly cloudinaryService: CloudinaryService,
     private readonly productService: ProductService,
   ) {}
+  @Get()
+  getAllProduct() {
+    return this.productService.getAllProduct();
+  }
   @Get(':id')
   getOneProduct() {
     return 'get one product';

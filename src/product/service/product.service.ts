@@ -10,6 +10,9 @@ export class ProductService {
     private readonly cloudinaryService: CloudinaryService,
   ) {}
 
+  async getAllProduct() {
+    return this.productRepository.findAllAndPopulate();
+  }
   async searchProductByName(name: string) {
     const listProduct = await this.productRepository.findAllProductByCondition({
       name: name,

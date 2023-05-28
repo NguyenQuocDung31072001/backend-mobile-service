@@ -12,6 +12,12 @@ export class ProductRepository extends BaseRepository<Product> {
   ) {
     super(productModel);
   }
+  async findAllAndPopulate() {
+    return this.productModel
+      .find()
+      .populate({ path: 'category', select: 'name _id' })
+      .populate({ path: 'rating' });
+  }
   async findAllProductByCondition(field: any) {
     return this.productModel.find(field);
   }
