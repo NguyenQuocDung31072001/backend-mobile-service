@@ -8,6 +8,7 @@ import { ProductModule } from './product/product.module';
 import { RatingModule } from './rating/rating.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { CategoryModule } from './category/category.module';
+import { CartModule } from './cart/cart.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { CategoryModule } from './category/category.module';
     }),
     CloudinaryModule,
     CategoryModule,
+    CartModule,
   ],
   controllers: [AppController],
   providers: [AppService],
