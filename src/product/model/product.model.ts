@@ -29,5 +29,5 @@ export interface Product extends Document {
   public_id: string;
   date: string;
   quantity: number;
-  rating: [Rating];
+  rating: (Rating | string)[];
 }

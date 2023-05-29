@@ -18,6 +18,6 @@ export { PurchaseSchema };
 
 export interface Purchase extends Document {
   user: User;
-  product: Product[];
+  product: (Product | string)[];
   status: string;
 }

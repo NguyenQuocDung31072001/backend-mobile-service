@@ -8,13 +8,14 @@ const RatingSchema = new Schema(
   },
   {
     timestamps: true,
-    collection: 'user',
+    collection: 'rating',
   },
 );
 
 export { RatingSchema };
 
 export interface Rating extends Document {
+  _id: string;
   rating: number;
   user: User;
 }
