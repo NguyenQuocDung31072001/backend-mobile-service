@@ -13,6 +13,10 @@ export class ProductService {
   async getAllProduct() {
     return this.productRepository.findAllAndPopulate();
   }
+
+  async getProductById(id: string) {
+    return this.productRepository.findProductByIDAndPopulate(id);
+  }
   async searchProductByName(name: string) {
     const listProduct = await this.productRepository.findAllProductByCondition({
       name: name,

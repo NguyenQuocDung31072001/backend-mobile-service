@@ -25,8 +25,8 @@ export class ProductController {
     return this.productService.getAllProduct();
   }
   @Get(':id')
-  getOneProduct() {
-    return 'get one product';
+  getOneProduct(@Param('id') id: string) {
+    return this.productService.getProductById(id);
   }
   @Get('search/:name')
   searchProduct(@Param('name') name: string) {
