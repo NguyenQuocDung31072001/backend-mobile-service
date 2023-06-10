@@ -12,17 +12,30 @@ const streamifier = require('streamifier');
 export class CloudinaryService {
   constructor(private readonly configService: ConfigService) {}
 
-  async uploadFile(file: Express.Multer.File): Promise<CloudinaryResponse> {
-    return new Promise<CloudinaryResponse>((resolve, reject) => {
-      const uploadStream = cloudinary.uploader.upload_stream(
-        (error, result) => {
-          console.log({ error, result });
+  async uploadFile(
+    file: Express.Multer.File,
+    old_public_id?: string,
+  ): Promise<CloudinaryResponse> {
+    console.log({ file: file.size });
 
-          if (error) return reject(error);
-          resolve(result);
-        },
-      );
-      streamifier.createReadStream(file.buffer).pipe(uploadStream);
+    return new Promise<CloudinaryResponse>((resolve, reject) => {
+      if (file.size > 1000000) {
+        throw new Error('Please upload a file size not more than 1M');
+      } else {
+        this.deleteFile(old_public_id);
+
+        const uploadStream = cloudinary.uploader.upload_stream(
+          (error, result) => {
+            console.log({ error, result });
+
+            if (error) return reject(error);
+            resolve(result);
+          },
+        );
+        console.log({ uploadStream });
+
+        streamifier.createReadStream(file.buffer).pipe(uploadStream);
+      }
     });
   }
   async deleteFile(public_id: string): Promise<any> {

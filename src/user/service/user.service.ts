@@ -21,10 +21,10 @@ export class UserService {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
     if (file) {
-      if (userModel.public_id) {
-        await this.cloudinaryService.deleteFile(userModel.public_id);
-      }
-      const uploadResult = await this.cloudinaryService.uploadFile(file);
+      const uploadResult = await this.cloudinaryService.uploadFile(
+        file,
+        userModel.public_id,
+      );
       const urlImage = uploadResult.url;
       const publicId = uploadResult.public_id;
       userModel.avatar_url = urlImage;
