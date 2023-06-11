@@ -13,6 +13,6 @@ export class PurchaseController {
 
   @Post()
   createPurchase(@Body() data: CreatePurchaseDto) {
-    return this.purchaseService.createPurchase(data.id_user);
+    return this.purchaseService.createPurchase(data);
   }
 }

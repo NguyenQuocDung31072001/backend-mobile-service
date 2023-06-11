@@ -6,6 +6,11 @@ const PurchaseSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     product: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
+    product_info: Array,
+    shipping_address: String,
+    credit_card_number: String,
+    expired_date: String,
+    cvv: String,
     status: String,
   },
   {
@@ -19,5 +24,10 @@ export { PurchaseSchema };
 export interface Purchase extends Document {
   user: User;
   product: (Product | string)[];
+  product_info: Product[];
+  shipping_address: string;
+  credit_card_number: string;
+  expired_date: string;
+  cvv: string;
   status: string;
 }

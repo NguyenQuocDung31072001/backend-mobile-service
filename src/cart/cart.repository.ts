@@ -16,7 +16,8 @@ export class CartRepository extends BaseRepository<Cart> {
     return this.cartModel
       .find(field)
       .populate({ path: 'user' })
-      .populate({ path: 'product' });
+      .populate({ path: 'product' })
+      .exec();
   }
   async findByConditionAndDontPopulate(field: any) {
     return this.cartModel.find(field);
