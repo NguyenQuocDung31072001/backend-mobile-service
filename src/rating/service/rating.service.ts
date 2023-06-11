@@ -23,10 +23,18 @@ export class RatingService {
   async getRatingByProduct(id_product) {
     return this.productModel.findById(id_product).populate({
       path: 'rating',
+      populate: {
+        path: 'user',
+      },
     });
   }
 
-  async createRating(id_user: string, id_product: string, rating: number) {
+  async createRating(
+    id_user: string,
+    id_product: string,
+    rating: number,
+    comment: string,
+  ) {
     const fieldPurchase: any = { user: id_user };
     const purchases = await this.purchaseModel.find(fieldPurchase);
     if (!purchases) {
@@ -46,6 +54,7 @@ export class RatingService {
     const newRating = await this.ratingModel.create({
       user: id_user,
       rating: rating,
+      comment: comment,
     });
     const product = await this.productModel.findById(id_product);
 

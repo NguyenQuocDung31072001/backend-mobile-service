@@ -9,6 +9,9 @@ export class CreateNewRatingDto {
 
   @IsNotEmpty()
   rating: number;
+
+  @IsNotEmpty()
+  comment: string;
 }
 export class UpdateRatingDto {
   @IsNotEmpty()

@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateProductDto } from '../dto/product.dto';
 import { ProductRepository } from '../repositories/product.repository';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
+import { removeVietnameseTones } from 'src/util/convertVie';
 
 @Injectable()
 export class ProductService {
@@ -18,10 +19,12 @@ export class ProductService {
     return this.productRepository.findProductByIDAndPopulate(id);
   }
   async searchProductByName(name: string) {
-    const listProduct = await this.productRepository.findAllProductByCondition({
-      name: name,
-    });
-    return listProduct;
+    const listProduct = await this.productRepository.findAll();
+    return listProduct.filter((product) =>
+      removeVietnameseTones(product.name.toLocaleLowerCase()).includes(
+        removeVietnameseTones(name.toLocaleLowerCase()),
+      ),
+    );
   }
   async createProduct(
     url: string,

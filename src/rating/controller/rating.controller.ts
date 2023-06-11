@@ -29,6 +29,7 @@ export class RatingController {
       data.id_user,
       data.id_product,
       data.rating,
+      data.comment,
     );
   }
 

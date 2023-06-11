@@ -16,13 +16,23 @@ export class ProductRepository extends BaseRepository<Product> {
     return this.productModel
       .find()
       .populate({ path: 'category', select: 'name _id' })
-      .populate({ path: 'rating' });
+      .populate({
+        path: 'rating',
+        populate: {
+          path: 'user',
+        },
+      });
   }
   async findProductByIDAndPopulate(id: string) {
     return this.productModel
       .findById(id)
       .populate({ path: 'category', select: 'name _id' })
-      .populate({ path: 'rating' });
+      .populate({
+        path: 'rating',
+        populate: {
+          path: 'user',
+        },
+      });
   }
   async findAllProductByCondition(field: any) {
     return this.productModel.find(field);
