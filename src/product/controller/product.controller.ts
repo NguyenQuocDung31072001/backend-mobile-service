@@ -24,10 +24,15 @@ export class ProductController {
   getAllProduct() {
     return this.productService.getAllProduct();
   }
+  @Get('/top')
+  getProductByTopRating() {
+    return this.productService.getProductTopRating();
+  }
   @Get(':id')
   getOneProduct(@Param('id') id: string) {
     return this.productService.getProductById(id);
   }
+
   @Get('search/:name')
   searchProduct(@Param('name') name: string) {
     return this.productService.searchProductByName(name);

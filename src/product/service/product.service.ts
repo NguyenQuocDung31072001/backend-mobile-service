@@ -3,6 +3,8 @@ import { CreateProductDto } from '../dto/product.dto';
 import { ProductRepository } from '../repositories/product.repository';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 import { removeVietnameseTones } from 'src/util/convertVie';
+import { Product } from '../model/product.model';
+import { Rating } from 'src/rating/model/rating.model';
 
 @Injectable()
 export class ProductService {
@@ -14,7 +16,23 @@ export class ProductService {
   async getAllProduct() {
     return this.productRepository.findAllAndPopulate();
   }
-
+  private calculateRatingArerage(product: Product) {
+    let totalRating = 0;
+    product.rating.forEach((rating: Rating) => {
+      totalRating += rating.rating;
+    });
+    if (product.rating.length === 0) return 0;
+    return totalRating / product.rating.length;
+  }
+  async getProductTopRating() {
+    const allProduct = await this.getAllProduct();
+    return allProduct.sort((productItem1, productItem2) => {
+      return (
+        this.calculateRatingArerage(productItem2) -
+        this.calculateRatingArerage(productItem1)
+      );
+    });
+  }
   async getProductById(id: string) {
     return this.productRepository.findProductByIDAndPopulate(id);
   }
