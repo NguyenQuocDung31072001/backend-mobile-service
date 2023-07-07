@@ -22,8 +22,9 @@ export class CloudinaryService {
       if (file.size > 1000000) {
         throw new Error('Please upload a file size not more than 1M');
       } else {
-        this.deleteFile(old_public_id);
-
+        if (old_public_id) {
+          this.deleteFile(old_public_id);
+        }
         const uploadStream = cloudinary.uploader.upload_stream(
           (error, result) => {
             console.log({ error, result });
